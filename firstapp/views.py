@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 from firstapp.models import Pizza
 from firstapp.forms import OrderForm
@@ -17,8 +19,10 @@ def pizza_detail(request, pizza_id):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
+            return HttpResponseRedirect('{}?sent=True'.format(reverse('pizza-detail', kwargs={'pizza_id': pizza.id})))
 
     return render(request, 'pizza_detail.html', {
         'pizza': pizza,
-        'form': form
+        'form': form,
+        'sent': request.GET.get('sent', False)
     })

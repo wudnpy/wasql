@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'firstapp',
     'testurlapp',
-    'teststaticapp'
+    'teststaticapp',
+    'validformapp'
 ]
 
 MIDDLEWARE = [
