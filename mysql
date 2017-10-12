@@ -1,0 +1,211 @@
+##############################Create DataBase#########################################
+CREATE DATABASE `telegram_bot`;
+
+##############################Create custom tables####################################
+CREATE TABLE `users` (
+    `id` INT(255) NOT NULL AUTO_INCREMENT,
+    `t_user_id` INT(255) DEFAULT NULL,
+    `first_name` VARCHAR(100) DEFAULT NULL,
+    `username` VARCHAR(100) DEFAULT NULL,
+    `last_name` VARCHAR(100) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1 ;
+
+CREATE TABLE `data` (
+    `id` INT(255) NOT NULL AUTO_INCREMENT,
+    `type` VARCHAR(50) DEFAULT NULL,
+    `content` VARCHAR(50) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1 ;
+
+CREATE TABLE `problems_list` (
+    `id` INT(255) NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(255) DEFAULT NULL,
+    `description` TEXT DEFAULT NULL,
+    `answer` TEXT DEFAULT NULL,
+    `date` VARCHAR(255) DEFAULT NULL,
+    `status` VARCHAR(255) DEFAULT NULL,
+    `count` INT(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1 ;
+
+CREATE TABLE `problems_id` (
+    `id` INT(255) NOT NULL AUTO_INCREMENT,
+    `problem_id` INT(255) DEFAULT NULL,
+    `user_id` INT(255) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY(`problem_id`) REFERENCES `problems_list`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1;
+
+CREATE TABLE `services_id` (
+    `id` INT(255) NOT NULL AUTO_INCREMENT,
+    `problem_id` INT(255) DEFAULT NULL,
+    `service_id` VARCHAR(255) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY(`problem_id`) REFERENCES `problems_list`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1;
+
+
+CREATE TABLE `expired_problems` (
+    `id` INT(255) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(50) DEFAULT NULL,
+    `service_id` INT(50) DEFAULT NULL,
+    `answer` TEXT DEFAULT NULL,
+    `status` VARCHAR(50) DEFAULT NULL,
+    `date` VARCHAR(50) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1;
+
+
+################################INSERT############################################################
+INSERT INTO `users` (`t_user`, `password`) VALUES ("admin", );
+INSERT INTO `data` (`type`, `content`) VALUES ("date", "17.06.2017");
+INSERT INTO `vote_problems_list` (`title`, `users_id`, `date`, `count`) VALUES ("Не работает ЕМИАС.", "0", "17.06.2017", "0");
+INSERT INTO `vote_problems_list` (`title`, `users_id`, `date`, `count`) VALUES ("Не работают инфокиоски.", "0", "17.06.2017", "0");
+INSERT INTO `problems_list` (`title`, `description`, `answer`, `users_id`, `services_id`, `date`, `status`, `count`) VALUES ("Ошибка X", "При запуске браузера возникает ошибка X", "", "00000000", "00000000", "24.05.2017", "active", 1);
+INSERT INTO `problems_list` (`title`, `description`, `answer`, `users_id`, `services_id`, `date`, `status`, `count`) VALUES ("Ошибка XX", "При запуске браузера возникает ошибка XX", "", "00000000", "00000000", "24.05.2017", "active", 1);
+INSERT INTO `problems_list` (`title`, `description`, `answer`, `users_id`, `services_id`, `date`, `status`, `count`) VALUES ("Ошибка XXX", "При запуске браузера возникает ошибка XXX", "", "00000000", "00000000", "24.05.2017", "active", 1);
+INSERT INTO `problems_list` (`title`, `description`, `answer`, `users_id`, `services_id`, `date`, `status`, `count`) VALUES ("Ошибка XXXX", "При запуске браузера возникает ошибка XXXX", "", "00000000", "00000000", "24.05.2017", "active", 1);
+INSERT INTO `problems_list` (`title`, `description`, `answer`, `users_id`, `services_id`, `date`, `status`, `count`) VALUES ("Ошибка XXXXX", "При запуске браузера возникает ошибка XXXX", "", "00000000", "00000000", "24.05.2017", "active", 1);
+INSERT INTO `problems_list` (`title`, `description`, `answer`, `users_id`, `services_id`, `date`, `status`, `count`) VALUES ("Ошибка XXXXXX", "При запуске браузера возникает ошибка XXXX", "", "00000000", "00000000", "24.05.2017", "active", 1);
+INSERT INTO `problems_list` (`title`, `description`, `answer`, `users_id`, `services_id`, `date`, `status`, `count`) VALUES ("Ошибка XXXXXXxXxXXXXXXXxxxxXXxXXXXXxxxxXXXXxxxxxxXXX", "При запуске браузера возникает ошибка XXXX", "", "00000000", "00000000", "24.05.2017", "active", 1);
+INSERT INTO `problems_list` (`title`, `description`, `answer`, `users_id`, `services_id`, `date`, `status`, `count`) VALUES ("Ошибка ну тут будет куча текста потому что есть ошибки которые парой слов описать нельзя", "При запуске браузера возникает ошибка XXXX", "", "00000000", "00000000", "24.05.2017", "active", 1);
+
+##########################################################INSER & SELECT########################################################
+try:
+    with connection.cursor() as cursor:
+        # Create a new record
+        sql = "INSERT INTO `problem_list` (`title`, `users_id`, `services_id`) VALUES (%s, %s, %s)"
+        cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
+
+    # connection is not autocommit by default. So you must commit to save
+    # your changes.
+    connection.commit()
+
+    with connection.cursor() as cursor:
+        # Read a single record
+        sql = "SELECT `id`, `title` FROM `title` WHERE `email`=%s"
+        cursor.execute(sql, ('ошибка 500',))
+        result = cursor.fetchone()
+        print(result)
+finally:
+    connection.close()
+
+
+##########################################SELECT####################################################
+SELECT * FROM problem_list;
+
+########################################Update########################################
+UPDATE table_name SET field = REPLACE(field, 'foo', 'bar') WHERE INSTR(field, 'foo') > 0;
+UPDATE problems_list SET users_id = "" WHERE id > 0;
+
+
+########################################DELETE###########################################
+DELETE FROM `problem_list` WHERE title = "ошибка 500";
+
+######################################DROP TABLE#########################################
+DROP TABLE `problem_list`;
+TRUNCATE TABLE users;
+
+############################################JSON######################################################
+#Create table JSON
+CREATE TABLE `problem_list` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `data` JSON DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1 ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**********************************************************************TRUNCATE***************************************************************************
+You cannot TRUNCATE a table that has FK constraints applied on it (TRUNCATE is not the same as DELETE).
+
+To work around this, use either of these solutions. Both present risks of damaging the data integrity.
+
+Option 1:
+
+    Remove constraints
+    Perform TRUNCATE
+    Delete manually the rows that now have references to nowhere
+    Create constraints
+
+Option 2: suggested by user447951 in their answer
+
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE table1;
+SET FOREIGN_KEY_CHECKS = 1;

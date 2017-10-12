@@ -13,9 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from firstapp import views
+#from testurlapp import views
+from firstapp import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-]
+    url(r'^$', views.home, name='home'),
+    url(r'^(?P<pizza_id>\d+)$', views.pizza_detail, name='pizza-detail'),
+    #url(r'^$', views.home, name='index'),
+    #url(r'^test_app/', include('testurlapp.test_urls'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
