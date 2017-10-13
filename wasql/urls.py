@@ -19,21 +19,22 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 
-from scauthapp import views
+from scauthapp import views as sc_auth
+from workspace import views as sc_workspace
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.home, name='home'),
+    url(r'^$', sc_auth.home, name='home'),
     url(r'scauthapp/login/$', auth_views.login,
         {'template_name': 'scauthapp/login.html'},
         name='scauthapp-login'),
     url(r'scauthapp/logout/$', auth_views.logout,
         {'next_page': '/'},
         name='scauthapp-logout'),
-    url(r'^scauthapp/$', views.authapp_home, name='scauthapp-home'),
-    url(r'^scauthapp/sign-up/', views.authapp_sign_up, name='scauthapp-sign-up')
-
-
+    url(r'^scauthapp/$', sc_auth.authapp_home, name='scauthapp-home'),
+    url(r'^scauthapp/sign-up/', sc_auth.authapp_sign_up, name='scauthapp-sign-up'),
+    url(r'^workspace/news/', sc_workspace.news, name='workspace-news'),
+    url(r'^workspace/queries/', sc_workspace.queries, name='workspace-queries'),
     #url(r'formpage/', views.form_page, name='form-page')
     #url(r'^(?P<pizza_id>\d+)$', views.pizza_detail, name='pizza-detail'),
     #url(r'^$', views.home, name='index'),

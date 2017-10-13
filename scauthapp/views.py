@@ -4,14 +4,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 
 from scauthapp.forms import UserForm, DepartmentForm
-
+from workspace.forms import QueryForm
+from workspace.models import Query
 # Create your views here.
 def home(request):
     return redirect(authapp_home)
 
 @login_required(login_url='/scauthapp/login')
 def authapp_home(request):
-    return render(request, 'scauthapp/home.html')
+    test = Query.objects.all()
+    return render(request, 'scauthapp/home.html', {
+    })
 
 def authapp_sign_up(request):
     user_form = UserForm()
@@ -25,9 +28,7 @@ def authapp_sign_up(request):
 
             new_user = User.objects.create_user(**user_form.cleaned_data)
             new_department = department_form.save(commit=False) # ??? сохранение без отправки в базу
-            print('НОВЫЙ ДЕПАРТАМЕНТ' + str(new_department))
             new_department.user = new_user
-            print('ИЗМЕНЕНИЕ ПОЛЬЗОВАТЕЛЯ В ДЕПАРТАМЕНТЕ: ' + str(new_department))
             new_department.save()
 
             user = authenticate(

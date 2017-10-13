@@ -4,11 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{% block title %}Pizza Shop{% endblock %}</title>
+  <title>{% block title %}Главная страница{% endblock %}</title>
 </head>
 <body>
- {% block page %}
+  <div id="main_container">
+    <div id="menu_container">
+      <b>Здравствуйте, {{request.user.last_name}} {{request.user.first_name}}!</b>
+      <div id="menu">
+            <a href="{% url 'scauthapp-home' %}"> Главная </a>
+            <a href="{% url 'workspace-news' %}"> Новости </a>
+            <a href="{% url 'workspace-queries' %}"> Работа с запросами </a>
+            <a href="{% url 'scauthapp-logout' %}"> Выход </a>
+      </div>
+      {% block menu %}
 
- {% endblock %}
+      {% endblock %}
+    </div>
+    <div id="body_container">
+     {% block page %}
+
+     {% endblock %}
+    </div>
+  </div>
 </body>
 </html>

@@ -8,3 +8,4 @@ admin.site.register(Pizza)
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['pizza', 'name', 'phone', 'date']
+    

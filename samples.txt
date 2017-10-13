@@ -1,0 +1,8 @@
+# оператор if
+{% if q_name or q_number or q_total_time %}
+  <ul>
+    <li>{{ q_name }}</li>
+    <li>{{ q_number }}</li>
+    <li>{{ q_total_time }}</li>
+  </ul>
+{% endif %}
