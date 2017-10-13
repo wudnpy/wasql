@@ -18,22 +18,22 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-#from testurlapp import views
-#from firstapp import views
-#from validformapp import views
-from authapp import views
+
+from scauthapp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
-    url(r'authapp/login/$', auth_views.login,
-        {'template_name': 'authapp/login.html'},
-        name='authapp-login'),
-    url(r'authapp/logout/$', auth_views.logout,
+    url(r'scauthapp/login/$', auth_views.login,
+        {'template_name': 'scauthapp/login.html'},
+        name='scauthapp-login'),
+    url(r'scauthapp/logout/$', auth_views.logout,
         {'next_page': '/'},
-        name='authapp-logout'),
-    url(r'^authapp/$', views.authapp_home, name='authapp-home'),
-    url(r'^authapp/sign-up/', views.authapp_sign_up, name='authapp-sign-up')
+        name='scauthapp-logout'),
+    url(r'^scauthapp/$', views.authapp_home, name='scauthapp-home'),
+    url(r'^scauthapp/sign-up/', views.authapp_sign_up, name='scauthapp-sign-up')
+
+
     #url(r'formpage/', views.form_page, name='form-page')
     #url(r'^(?P<pizza_id>\d+)$', views.pizza_detail, name='pizza-detail'),
     #url(r'^$', views.home, name='index'),

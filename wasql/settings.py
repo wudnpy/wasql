@@ -42,12 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'scauthapp'
+]
+
+'''
+    # тестовые модули
     'firstapp',
     'testurlapp',
     'teststaticapp',
     'validformapp',
     'authapp'
-]
+'''
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
