@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'firstapp',
     'testurlapp',
     'teststaticapp',
-    'validformapp'
+    'validformapp',
+    'authapp'
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -116,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-Ru' # 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'# 'UTC'
 
 USE_I18N = True
 
@@ -138,3 +140,6 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     STATICFILES_DIR
 ]
+
+#
+LOGIN_REDIRECT_URL = '/'
