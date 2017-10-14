@@ -1,0 +1,6 @@
+# действие при полной загрузке страницы
+<script type="text/javascript">
+  $(document).ready(function functionName() {
+    alert('Hello World!')
+  });
+</script>

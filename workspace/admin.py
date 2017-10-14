@@ -6,4 +6,4 @@ from workspace.models import Query
 # Декоратор с помощью которого в админке отображаются указанные поля
 @admin.register(Query)
 class QueryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'number']
+    list_display = ['name', 'number', 'q_type']

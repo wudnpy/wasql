@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+{% block title %} Работа с запросами - детали {% endblock %}
+
+{% block page %}
+
+<h2>Детальки детали деталиньки.</h2>
+<form method="POST">
+  {% csrf_token %} {{ query_form.as_p }} {% if q_name and q_number and q_total_time%}
+  <h2>Ваш запрос принят. Через xx:xx проверьте электронную почту.</h2> {% endif %}
+  <button type="submit">Выполнить запрос</button>
+</form>
+
+{% endblock%}

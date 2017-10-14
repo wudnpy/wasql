@@ -5,15 +5,16 @@ from django.contrib.auth import authenticate, login
 
 from scauthapp.forms import UserForm, DepartmentForm
 from workspace.forms import QueryForm
-from workspace.models import Query
+
 # Create your views here.
 def home(request):
     return redirect(authapp_home)
 
 @login_required(login_url='/scauthapp/login')
 def authapp_home(request):
-    test = Query.objects.all()
+    is_home = True
     return render(request, 'scauthapp/home.html', {
+        'is_home': is_home
     })
 
 def authapp_sign_up(request):

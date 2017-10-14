@@ -1,17 +1,19 @@
 {% extends 'base.html'%}
+{% block title %} Работа с запросами {% endblock %}
 
-  {% block title %}
-    Работа с запросами
-  {% endblock %}
+{% block page %}
 
-  {% block page %}
-    <h2>Самые горячие "запросы" только здесь!</h2>
-    <form method="POST">
-      {% csrf_token %}
-      {{ query_form.as_p }}
-      {% if q_name and q_number and q_total_time%}
-        <h2>Ваш запрос принят. Через xx:xx проверьте электронную почту.</h2>
-      {% endif %}
-      <button type="submit">Выполнить запрос</button>
-    </form>
-  {%  endblock%}
+<div class="container">
+  <h2>Самые горячие "запросы" только здесь!</h2>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">НАЖИМАЙ И ВЫБИРАЙ!
+  <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      {% for q_name in objects %}
+      <li><a href="workspace/query/detail/1">{{ q_name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock%}

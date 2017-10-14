@@ -1,0 +1,59 @@
+div#login_div {
+   /*background-color: red;*/
+   width: 500px;
+   height: 500px;
+   position: absolute;
+   top:0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+}
+
+.login_form {
+  background-color: #f1f1f1;
+  width: 70%;
+  height: 40%;
+  margin: 0 auto;
+  border-radius: 25px;
+}
+
+h2#title {
+  width: 35%;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.login_lbl {
+  width: 40%;
+  text-align: center;
+  margin:0 auto;
+  display:block;
+}
+
+
+.password_lbl {
+  width: 40%;
+  text-align: center;
+  margin:0 auto;
+  display:block;
+}
+
+#submit {
+  width: 100px;
+  background-color:#ffffff;
+  border-radius: 1%;
+  margin:0 auto;
+  display:block;
+  border: 1px solid #000000;
+}
+
+div#login_div input {
+  width: 40%;
+  background-color:#ffffff;
+  border-radius: 5%;
+  margin:0 auto;
+  display:block;
+  border: 1px solid #000000;
+}
