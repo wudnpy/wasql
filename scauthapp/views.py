@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 
 from scauthapp.forms import UserForm, DepartmentForm
-from workspace.forms import QueryForm
 
 # Create your views here.
 def home(request):

@@ -9,8 +9,10 @@
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">НАЖИМАЙ И ВЫБИРАЙ!
   <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      {% for q_name in objects %}
-      <li><a href="workspace/query/detail/1">{{ q_name }}</a></li>
+      {% for object in objects %}
+          {% with object.number as q_id %}
+          <li><a href="{% url 'workspace-query-detail' q_id %}">{{ object.name }}</a></li>
+          {% endwith %}
       {% endfor %}
     </ul>
   </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from workspace.forms import QueryForm
+from workspace.forms import QueryFormType0
 from workspace.forms import Query
 
 # Create your views here.
@@ -11,24 +11,31 @@ def news(request):
     })
 
 def queries(request):
-    objects = Query.objects.all()
+    #objects = Query.objects.all()
+
+    objects = Query.objects.all().values()
+
     return render(request, 'workspace/queries.html', {'objects':objects})
 
-def query_detail(request):
+def query_detail(request, q_id):
 
-    query_form = QueryForm()
+    objects = Query.objects.all().values()
+
     is_queries = True
+
+    query_form = QueryFormType0()
+
     elements = {'query_form': query_form, 'is_queries': is_queries, }
 
     for item in request:
         print(item)
     if request.method == 'POST':
-        query_form = QueryForm(request.POST)
+        query_form = QueryFormType0(request.POST)
 
         if query_form.is_valid():
             q_name = query_form.cleaned_data['name']
             elements.update({'q_name': q_name})
-            objects = Query.objects.all().values()
+
 
             # Обработка значения выбранного пользователем
             for object in objects:
@@ -38,4 +45,7 @@ def query_detail(request):
                     q_total_time = object['total_time']
                     elements.update({'q_total_time': q_total_time})
             return redirect('/scauthapp')
-    return render(request, 'workspace/query_detail.html', {elements})
+    return render(request, 'workspace/query-detail.html', elements)
+
+def rating(request):
+    return render(request, 'workspace/rating.html')

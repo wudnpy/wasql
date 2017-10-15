@@ -1,19 +1,64 @@
-{% extends 'base.html'%} {% block title %} Хоум пейдж {% endblock %} {% block page %}
+{% extends 'base.html'%} {% block title %} Хоум пейдж {% endblock %}
+
+{% block scripts %}
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    //Создаю список из массиваа
+    var python = {};
+    python.name = 'Python';
+    python.modules = ['Django'];
+
+
+    var javascript = {};
+    javascript.name = 'Javacript';
+    javascript.modules = ['jQuery', 'Bootstrap', 'D3.js'];
+
+    var html = {};
+    html.name = 'HTML';
+    html.modules = ['HTML5'];
+
+    var css = {}
+    css.name = 'CSS';
+    css.modules = ['CSS3'];
+
+    var tools = [python, javascript, html, css]
+
+    var list = $("#details").append('<ul id=\"tools\"></ul>');
+
+    for (var tool = 0; tool < tools.length; tool++) {
+        $('#tools').append('<li id=\"'+ tools[tool].name + '\">' + tools[tool].name + '</li>')
+            $('#'+tools[tool].name).append('<ul></ul>');
+
+            for (var modul = 0; modul < tools[tool].modules.length; modul++) {
+                $('#'+tools[tool].name).find('ul').append('<li>'+tools[tool].modules[modul]+'</li>');
+            }
+    }
+
+    alert ('jQuery подключен и отлично работает!');
+
+    /*
+    //Дискотека
+    d3.select("body").style("background-color", function() {
+        return "hsl(" + Math.random() * 360 + ",100%,50%)";
+    });
+
+    d3.select("body").style("color", function() {
+        return "hsl(" + Math.random() * 360 + ",100%,50%)";
+    });
+    */
+});
+
+
+
+
+  </script>
+{% endblock %}
+
+ {% block page %}
 
 <h2>Что мы используем:</h2>
-<ul>
-  <li>Python</li>
-  <ul>
-    <li>Django</li>
-  </ul>
-  <li>Javacript</li>
-  <ul>
-    <li>jQuery</li>
-    <li>Bootstrap</li>
-  </ul>
-  <li>CSS</li>
-  <li>HTML</li>
-</ul>
-
+<div id="details"></div>
 
 {% endblock %}

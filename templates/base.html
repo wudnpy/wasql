@@ -29,6 +29,7 @@
             <li {% if is_home %} class="active" {% endif %}><a href="{% url 'scauthapp-home' %}">Главная</a></li>
             <li {% if is_news %} class="active" {% endif %}><a href="{% url 'workspace-news' %}">Новости</a></li>
             <li {% if is_queries %} class="active" {% endif %}><a href="{% url 'workspace-queries' %}">Работа с запросами</a></li>
+            <li {% if is_rating %} class="active" {% endif %}><a href="{% url 'workspace-rating' %}">Рейтинг</a></li>
             <li><a href="{% url 'scauthapp-logout' %}">Выход</a></li>
           </ul>
         </div>

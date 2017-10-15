@@ -1,13 +1,39 @@
 {% extends 'base.html'%}
 {% block title %} Работа с запросами - детали {% endblock %}
 
+{% block scripts %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type="text/javascript">
+$( function() {
+    $( "#start_date" ).datepicker();
+    $( "#end_date" ).datepicker();
+});
+</script>
+{% endblock %}
+
 {% block page %}
 
 <h2>Детальки детали деталиньки.</h2>
 <form method="POST">
-  {% csrf_token %} {{ query_form.as_p }} {% if q_name and q_number and q_total_time%}
-  <h2>Ваш запрос принят. Через xx:xx проверьте электронную почту.</h2> {% endif %}
-  <button type="submit">Выполнить запрос</button>
+
+    {% csrf_token %}
+    {{ query_form.as_p }}
+
+
+
+
+    {% if  1 %}
+    <p>Начальная дата: <input type="text" id="start_date"></p>
+    <p>Конечная дата: <input type="text" id="end_date"></p>
+    {% endif %}
+
+    {% if q_name and q_number and q_total_time %}
+    <h2>Ваш запрос принят. Через xx:xx проверьте электронную почту.</h2>
+    {% endif %}
+    <button type="submit">Выполнить запрос</button>
 </form>
 
 {% endblock%}
