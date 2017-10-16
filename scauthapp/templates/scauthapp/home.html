@@ -1,4 +1,6 @@
-{% extends 'base.html'%} {% block title %} Хоум пейдж {% endblock %}
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block title %} Хоум пейдж {% endblock %}
 
 {% block style %}
 
@@ -30,6 +32,7 @@
         border-style: solid;
         border-width: 1px;
         border-color: #E7E7E7;
+        border-radius: 1%;
     }
 
     /*
@@ -73,12 +76,16 @@ $(document).ready(function(){
     css.name = 'CSS';
     css.modules = ['CSS3'];
 
-    var tools = [python, javascript, html, css]
+    var db = {}
+    db.name = "DB"
+    db.modules = ['SQLite']
+
+    var tools = [python, javascript, html, css, db]
 
     var list = $("#details").append('<ul id=\"tools\"></ul>');
 
     for (var tool = 0; tool < tools.length; tool++) {
-        $('#tools').append('<li id=\"'+ tools[tool].name + '\">' + tools[tool].name + '</li>')
+        $('#tools').append('<li id=\"'+ tools[tool].name + '\">' + '<b>' + tools[tool].name + '<b>' + '</li>')
             $('#'+tools[tool].name).append('<ul></ul>');
 
             for (var modul = 0; modul < tools[tool].modules.length; modul++) {
@@ -109,11 +116,69 @@ $(document).ready(function(){
 
 <div class="col-xs-12 col-sd-3 col-md-3 col-ld-3 " id="details">
     <h2>Что мы используем <span class="glyphicon glyphicon-arrow-down"></span></h2>
+    <img src="{% static 'img/bug.jpg' %}" alt="Костыли и Велосипеды!">
 </div>
 <div class="col-xs-12 col-sd-9 col-md-9 col-ld-9" id="playground">
-    <form class="test_form" method="post">
+    <h2>Задачи:</h2>
+    <div class="row">
+        <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+            1. Разобраться в в формах.
+        </div>
+        <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
 
-    </form>
+            <br><br>
+            <div class="row">
+                <div class="col-xs-8 col-sd-8 col-md-8 col-ld-8">
+                    <h3>Как быть должно :</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input">
+                          Check me out
+                        </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="row">
+                <div class="">
+                    <h3>Как есть:</h3>
+                    <form class="test_form" method="post">
+                        <label for="name">Имя</label><input type="text" name="name" value="">
+                        <label for="surname">Фамилия</label><input type="text" name="surname" value="">
+                        <label for="birthdate">Дата рождения</label><input type="text" name="birthdate" value="">
+                        <button type="submit" name="submit">Применить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</div><br>
+<div class="row">
+    <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+        2. Разобраться в SQLite.
+    </div>
+    <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+        Есть идея использовать SQLite для организации request/response в проге для выгрузок. Возможно даже для хранения файлов.
+    </div>
+</div><br>
+<div class="row">
+    <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+        3. Разобраться в AJAX.
+    </div>
+    <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+    </div>
+</div>
 </div>
 
 {% endblock %}
