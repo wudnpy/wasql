@@ -1,12 +1,36 @@
 {% extends 'base.html'%}
 {% block title %} Работа с запросами {% endblock %}
 
+{% block style %}
+<style>
+
+#dropdown_btn {
+    background-color: #F8F8F8;
+    color: #555555;
+    border-color: #E7E7E7;
+}
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+function () {
+    $("#dropdown_btn").css("background-color", "yellow");
+}
+
+
+</script>
+
+{% endblock %}
+
 {% block page %}
 
 <div class="container">
   <h2>Самые горячие "запросы" только здесь!</h2>
   <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">НАЖИМАЙ И ВЫБИРАЙ!
+    <button class="btn btn-primary dropdown-toggle" id="dropdown_btn" type="button" data-toggle="dropdown">НАЖИМАЙ И ВЫБИРАЙ!
   <span class="caret"></span></button>
     <ul class="dropdown-menu">
       {% for object in objects %}

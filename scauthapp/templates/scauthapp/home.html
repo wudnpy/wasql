@@ -3,6 +3,35 @@
 {% block style %}
 
 <style>
+    /*Эффекты блока 'Что мы используем' */
+    #details {
+        background-color: white;
+        color: white;
+        transition: 1.7s;
+    }
+
+    #details span {
+        color: black;
+    }
+
+    #details h2 {
+        color: black;
+        text-align: left;
+    }
+
+    #details:hover {
+        color: black;
+    }
+
+
+    #playground {
+        background-color: #F0F0F0;
+        height: 1024px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #E7E7E7;
+    }
+
     /*
     #tools {
         border: 1px #000 solid;
@@ -26,7 +55,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-    //Создаю список из массиваа
+    //////////////////////////////////////////////////Создаю список из массиваа
     var python = {};
     python.name = 'Python';
     python.modules = ['Django'];
@@ -60,7 +89,7 @@ $(document).ready(function(){
     alert ('jQuery подключен и отлично работает!');
 
     /*
-    //Дискотека
+    //////////////////////////////////////////////////////////////////Дискотека
     d3.select("body").style("background-color", function() {
         return "hsl(" + Math.random() * 360 + ",100%,50%)";
     });
@@ -69,17 +98,22 @@ $(document).ready(function(){
         return "hsl(" + Math.random() * 360 + ",100%,50%)";
     });
     */
+
 });
-
-
-
 
   </script>
 {% endblock %}
 
- {% block page %}
+{% block page %}
 
-<h2>Что мы используем:</h2>
-<div id="details"></div>
+
+<div class="col-xs-12 col-sd-3 col-md-3 col-ld-3 " id="details">
+    <h2>Что мы используем <span class="glyphicon glyphicon-arrow-down"></span></h2>
+</div>
+<div class="col-xs-12 col-sd-9 col-md-9 col-ld-9" id="playground">
+    <form class="test_form" method="post">
+
+    </form>
+</div>
 
 {% endblock %}

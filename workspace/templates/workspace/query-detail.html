@@ -1,17 +1,48 @@
 {% extends 'base.html'%}
 {% block title %} Работа с запросами - детали {% endblock %}
 
+{%  block style %}
+<style>
+    #q_form {
+        #background-color: black;
+        margin-left: 50px;
+        width: 20%;
+    }
+
+    #submit {
+        color: black;
+        border-radius: 25px;
+    }
+
+    input {
+        width: 200px;
+    }
+</style>
+{% endblock %}
+
 {% block scripts %}
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
-$( function() {
-    $( "#start_date" ).datepicker();
-    $( "#end_date" ).datepicker();
-    alert(q_object.name)
+$(document).ready(function() {
+    //alert("Hello World!")
 });
+
+
+
+$("#submit").click(function() {
+    alert( "Handler for .click() called." );
+});
+
+$( function() {
+    $( "#start_date" ).datepicker({ dateFormat: 'dd.mm.yy' });
+    $( "#end_date" ).datepicker({ dateFormat: 'dd.mm.yy' });
+
+});
+
+
 </script>
 {% endblock %}
 
@@ -23,21 +54,28 @@ $( function() {
     {% csrf_token %}
 
     {% if name  %}
-        <label for="name">{{name}}</label>
-        <input type="text" name="name" value="{{name}}" hidden="hidden">
+        <h4><label for="name">{{name}}</label></h4>
+        <input type="text" name="name" value="{{uname}}" hidden="hidden">
+        <input type="text" name="q_name" value="{{name}}" hidden="hidden">
         <input type="text" name="q_number" value="{{number}}" hidden="hidden">
         <input type="text" name="q_type" value="{{q_type}}" hidden="hidden">
+        <input type="text" name="e_mail" value="{{e_mail}}" hidden="hidden">
+        <input type="text" name="totalTime" value="12" hidden="hidden">
     {% endif %}
 
-    {% if  q_type != 0 %}
-        <p>Начальная дата: <input name="startdate" type="text" id="start_date"></p>
-        <p>Конечная дата: <input name="enddate" type="text" id="end_date"></p>
+    {% if q_type == 1  %}
+      <input type="text" name="patientID" value="" required>
+    {% endif %}
+
+    {% if  q_type == 2 %}
+        <p>Начальная дата: <input name="startDate" type="text" id="start_date" required></p>
+        <p>Конечная дата: <input name="endDate" type="text" id="end_date" required></p>
     {% endif %}
 
     {% if q_name and q_number and q_total_time %}
         <h2>Ваш запрос принят. Через xx:xx проверьте электронную почту.</h2>
     {% endif %}
-    <button type="submit">Выполнить запрос</button>
+    <button class="btn btn-default" id="submit" type="submit">Выполнить запрос</button>
 </form>
 
 {% endblock%}

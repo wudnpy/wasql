@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from workspace.forms import QueryFormType0
 from workspace.forms import Query
+from asql_connector import ASQLConnector
 
 # Create your views here.
 def news(request):
@@ -20,7 +20,7 @@ def queries(request):
 def query_detail(request, q_id):
     is_queries = True # переменная служит для выделения раздела в котором мы находимся на сайте.
 
-    elements = { 'is_queries': is_queries }
+    elements = { 'is_queries': is_queries, 'e_mail': request.user.email, 'uname': request.user }
 
     q_object = Query.objects.filter(number=q_id).values()
 
@@ -29,7 +29,16 @@ def query_detail(request, q_id):
     if request.method == 'POST':
 
         q = request.POST
-        print(q.get('name'))
+        print(q)
+        connector = ASQLConnector()
+
+        for key in q:
+            if str(key) != 'csrfmiddlewaretoken':
+
+                connector.dataset.update({key:q[key]})
+
+        connector.connect()
+
         return redirect('/scauthapp')
     return render(request, 'workspace/query-detail.html', elements)
 

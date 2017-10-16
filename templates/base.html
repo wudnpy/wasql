@@ -8,6 +8,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{% block title %}Главная страница{% endblock %}</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body {
+        #background-color: purple;
+    }
+
+    #body_container {
+        #background-color: green;
+    }
+
+  </style>
   {% block style %} {% endblock %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -15,26 +25,27 @@
 </head>
 
 <body class="bg-ruby">
-  <div id="main_container">
-    <div id="menu_container">
-      <b>Добро пожаловать!</b>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'scauthapp-home' %}">SC-DZM-TR</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li {% if is_home %} class="active" {% endif %}><a href="{% url 'scauthapp-home' %}">Главная</a></li>
-            <li {% if is_news %} class="active" {% endif %}><a href="{% url 'workspace-news' %}">Новости</a></li>
-            <li {% if is_queries %} class="active" {% endif %}><a href="{% url 'workspace-queries' %}">Работа с запросами</a></li>
-            <li {% if is_rating %} class="active" {% endif %}><a href="{% url 'workspace-rating' %}">Рейтинг</a></li>
-            <li><a href="{% url 'scauthapp-logout' %}">Выход</a></li>
-          </ul>
-        </div>
-      </nav>
-      {% block menu %} {% endblock %}
-    </div>
-    <div id="body_container">
+
+  <div class="container" id="main_container">
+      <div class="row">
+            <b>Добро пожаловать!</b>
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="{% url 'scauthapp-home' %}">SC-DZM-TR</a>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li {% if is_home %} class="active" {% endif %}><a href="{% url 'scauthapp-home' %}">Главная</a></li>
+                  <li {% if is_news %} class="active" {% endif %}><a href="{% url 'workspace-news' %}">Новости</a></li>
+                  <li {% if is_queries %} class="active" {% endif %}><a href="{% url 'workspace-queries' %}">Работа с запросами</a></li>
+                  <li {% if is_rating %} class="active" {% endif %}><a href="{% url 'workspace-rating' %}">Рейтинг</a></li>
+                  <li><a href="{% url 'scauthapp-logout' %}">Выход</a></li>
+                </ul>
+              </div>
+            </nav>
+      </div>
+
+    <div class="row " id="body_container">
       {% block page %} {% endblock %}
     </div>
   </div>

@@ -22,7 +22,7 @@ def authapp_sign_up(request):
 
     if request.method == 'POST':
         user_form = UserForm(request.POST)
-        department_form = Department(request.POST, request.FILES)
+        department_form = DepartmentForm(request.POST, request.FILES)
 
         if user_form.is_valid() and department_form.is_valid():
 

@@ -1,6 +1,23 @@
 # действие при полной загрузке страницы
+
 <script type="text/javascript">
   $(document).ready(function functionName() {
     alert('Hello World!')
   });
 </script>
+
+# действия по клику на элементе
+
+$(document).on("click","#submit", function () {
+   var clickedBtnID = $(this).attr('id'); // or var clickedBtnID = this.id
+   alert('you clicked on button #' + clickedBtnID);
+   var items = $('#my-list li');
+
+    // the increment between each color change
+    var step = (255.0 / items.size());
+
+    items.each(function(i, e) {
+    var shade = i * step;
+    $(this).css("background-color", "rgb(255," + shade + "," + shade + ")");
+});
+});
