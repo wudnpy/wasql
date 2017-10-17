@@ -41,6 +41,3 @@ def query_detail(request, q_id):
 
         return redirect('/scauthapp')
     return render(request, 'workspace/query-detail.html', elements)
-
-def rating(request):
-    return render(request, 'workspace/rating.html')

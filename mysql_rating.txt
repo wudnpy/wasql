@@ -2,12 +2,9 @@
 CREATE DATABASE `telegram_bot`;
 
 ##############################Create custom tables####################################
-CREATE TABLE `users` (
-    `id` INT(255) NOT NULL AUTO_INCREMENT,
-    `t_user_id` INT(255) DEFAULT NULL,
-    `first_name` VARCHAR(100) DEFAULT NULL,
-    `username` VARCHAR(100) DEFAULT NULL,
-    `last_name` VARCHAR(100) DEFAULT NULL,
+CREATE TABLE `age` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(100) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 AUTO_INCREMENT=1 ;
@@ -66,6 +63,17 @@ AUTO_INCREMENT=1;
 ################################INSERT############################################################
 INSERT INTO `users` (`t_user`, `password`) VALUES ("admin", );
 INSERT INTO `data` (`type`, `content`) VALUES ("date", "17.06.2017");
+INSERT INTO `groups` (`name`) VALUES ("Лин. Контр." );
+INSERT INTO `groups` (`name`) VALUES ("Опросы" );
+INSERT INTO `groups` (`name`) VALUES ("Организация приема пациентов" );
+INSERT INTO `groups` (`name`) VALUES ("Отношение персонала" );
+INSERT INTO `groups` (`name`) VALUES ("Качество документооборота" );
+INSERT INTO `groups` (`name`) VALUES ("Чистота и хозяйственное обеспечение" );
+INSERT INTO `groups` (`name`) VALUES ("Благодарности и нейтральные комментарии" );
+
+INSERT INTO `age` (`name`) VALUES ("Дети");
+INSERT INTO `age` (`name`) VALUES ("Взрослые");
+
 INSERT INTO `vote_problems_list` (`title`, `users_id`, `date`, `count`) VALUES ("Не работает ЕМИАС.", "0", "17.06.2017", "0");
 INSERT INTO `vote_problems_list` (`title`, `users_id`, `date`, `count`) VALUES ("Не работают инфокиоски.", "0", "17.06.2017", "0");
 INSERT INTO `problems_list` (`title`, `description`, `answer`, `users_id`, `services_id`, `date`, `status`, `count`) VALUES ("Ошибка X", "При запуске браузера возникает ошибка X", "", "00000000", "00000000", "24.05.2017", "active", 1);

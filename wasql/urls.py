@@ -20,8 +20,10 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 
 from scauthapp import views as sc_auth
-from scauthapp import forms as sc_auth_forms
 from workspace import views as sc_workspace
+from rating import views as sc_rating
+
+from scauthapp import forms as sc_auth_forms
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -37,7 +39,7 @@ urlpatterns = [
     url(r'^workspace/news/', sc_workspace.news, name='workspace-news'),
     url(r'^workspace/queries/', sc_workspace.queries, name='workspace-queries'),
     url(r'^workspace/query-detail/(\d+)', sc_workspace.query_detail, name='workspace-query-detail'),
-    url(r'^workspace/rating/', sc_workspace.rating, name='workspace-rating'),
+    url(r'^rating/home/', sc_rating.rating, name='rating-home'),
     #url(r'formpage/', views.form_page, name='form-page')
     #url(r'^(?P<pizza_id>\d+)$', views.pizza_detail, name='pizza-detail'),
     #url(r'^$', views.home, name='index'),
