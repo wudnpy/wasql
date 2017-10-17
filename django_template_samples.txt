@@ -15,3 +15,11 @@
     >
                   {{ field.label }}</label> <br> {{ field }}<br>
 {% endfor %}
+
+# не забыть что так можно
+
+<style>
+  body {
+      #background-color: purple;
+  }
+</style>
