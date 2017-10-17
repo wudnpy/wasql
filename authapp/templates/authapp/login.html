@@ -8,10 +8,20 @@
 </head>
 <body>
   <h2>Вход</h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Выполнить вход</button>
-  </form>
+  <div class="" id="page">
+      <div class="" id="header"></div>
+      <div class="" id="main">
+          <div class="" id="login-container">
+              <div class="" id="login-section">
+                  <form name="loginform" method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit">Выполнить вход</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <div class="" id="footer"></div>
+  </div>
 </body>
 </html>

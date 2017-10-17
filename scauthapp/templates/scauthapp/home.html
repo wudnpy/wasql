@@ -49,66 +49,25 @@
         width: 300px;
     }
     */
+    /*Горизонтальная линия*/
+    hr {
+      -moz-border-bottom-colors: none;
+      -moz-border-image: none;
+      -moz-border-left-colors: none;
+      -moz-border-right-colors: none;
+      -moz-border-top-colors: none;
+      border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+      border-style: solid none;
+      border-width: 1px 0;
+      margin: 18px 0;
+    }
 </style>
 
 {% endblock %}
 
 {% block scripts %}
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script type="text/javascript">
-
-$(document).ready(function(){
-    //////////////////////////////////////////////////Создаю список из массиваа
-    var python = {};
-    python.name = 'Python';
-    python.modules = ['Django'];
-
-
-    var javascript = {};
-    javascript.name = 'Javacript';
-    javascript.modules = ['jQuery', 'Bootstrap', 'D3.js'];
-
-    var html = {};
-    html.name = 'HTML';
-    html.modules = ['HTML5'];
-
-    var css = {}
-    css.name = 'CSS';
-    css.modules = ['CSS3'];
-
-    var db = {}
-    db.name = "DB"
-    db.modules = ['SQLite']
-
-    var tools = [python, javascript, html, css, db]
-
-    var list = $("#details").append('<ul id=\"tools\"></ul>');
-
-    for (var tool = 0; tool < tools.length; tool++) {
-        $('#tools').append('<li id=\"'+ tools[tool].name + '\">' + '<b>' + tools[tool].name + '<b>' + '</li>')
-            $('#'+tools[tool].name).append('<ul></ul>');
-
-            for (var modul = 0; modul < tools[tool].modules.length; modul++) {
-                $('#'+tools[tool].name).find('ul').append('<li>'+tools[tool].modules[modul]+'</li>');
-            }
-    }
-
-    alert ('jQuery подключен и отлично работает!');
-
-    /*
-    //////////////////////////////////////////////////////////////////Дискотека
-    d3.select("body").style("background-color", function() {
-        return "hsl(" + Math.random() * 360 + ",100%,50%)";
-    });
-
-    d3.select("body").style("color", function() {
-        return "hsl(" + Math.random() * 360 + ",100%,50%)";
-    });
-    */
-
-});
-
-  </script>
+<script src="{% static 'js/scauthapp/home-tools.js' %}"></script>
 {% endblock %}
 
 {% block page %}
@@ -121,10 +80,10 @@ $(document).ready(function(){
 <div class="col-xs-12 col-sd-9 col-md-9 col-ld-9" id="playground">
     <h2>Задачи:</h2>
     <div class="row">
-        <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+        <div class="col-xs-12 col-sd-6 col-md-6 col-ld-6">
             1. Разобраться в в формах.
         </div>
-        <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+        <div class="col-xs-12 col-sd-6 col-md-6 col-ld-6">
 
             <br><br>
             <div class="row">
@@ -165,20 +124,34 @@ $(document).ready(function(){
         </div>
 </div><br>
 <div class="row">
-    <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+    <div class="col-xs-12 col-sd-6 col-md-6 col-ld-6">
         2. Разобраться в SQLite.
     </div>
-    <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+    <div class="col-xs-12 col-sd-6 col-md-6 col-ld-6">
         Есть идея использовать SQLite для организации request/response в проге для выгрузок. Возможно даже для хранения файлов.
     </div>
 </div><br>
 <div class="row">
-    <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+    <div class="col-xs-12 col-sd-6 col-md-6 col-ld-6">
         3. Разобраться в AJAX.
     </div>
-    <div class="col-xs-6 col-sd-6 col-md-6 col-ld-6">
+    <div class="col-xs-12 col-sd-6 col-md-6 col-ld-6">
     </div>
 </div>
+<hr>
+<div class="row">
+    <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12">
+        <h2>Задачи на сегодня:</h2>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12">
+            1. Создать страничку личного кабинета.
+                <p>1.1 Фотография пользователя.</p>
+                <p>1.2 Ник</p>
+                <p>1.3 ФИО</p>
+        </div>
+
+    </div>
 </div>
 
 {% endblock %}

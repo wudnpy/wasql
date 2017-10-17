@@ -20,13 +20,14 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 
 from scauthapp import views as sc_auth
+from scauthapp import forms as sc_auth_forms
 from workspace import views as sc_workspace
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', sc_auth.home, name='home'),
     url(r'scauthapp/login/$', auth_views.login,
-        {'template_name': 'scauthapp/login.html'},
+        {'template_name': 'scauthapp/login.html', 'authentication_form': sc_auth_forms.LoginForm },
         name='scauthapp-login'),
     url(r'scauthapp/logout/$', auth_views.logout,
         {'next_page': '/'},

@@ -7,30 +7,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Вход</title>
-  <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/scauthapp/login_style.css' %}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-  <div id="login_div">
-  <h2 id="title">Авторизация</h2>
-  <form class="login_form" method="POST">
-    {% csrf_token %}
 
-    {% for field in form %}
-        <label class= {% if forloop.counter0 == 0 %} "login_lbl" {% endif %}
-                      {% if forloop.counter0 == 1 %} "password_lbl" {% endif %}>
-                      {{ field.label }}</label> <br> {{ field }}<br>
-    {% endfor %}
 
-    <button id="submit" type="submit">Войти</button>
-  </form>
-  </div>
-  <form action="/scauthapp/sign-up/">
-    <button>Регистрация</button>
-  </form>
+<div class="" id="page">
+        <div class="" id="header">
+    <a id="sign-up" href="{% url 'scauthapp-sign-up' %}">Регистрация</a>
+    </div>
+        <div class="" id="main">
+            <div class="" id="login-container">
+                <div class="" id="login-section">
+                    <form class="login_form" method="POST">
+                        <h2 id="title">Авторизация</h2>
+                        <div class="" id="action-messages">
+                        </div>
+                        {% csrf_token %}
+                        <fieldset>
+                            <div class="field-group">
+                                {{ form.username}}
+                            </div>
+                            <div class="field-group">
+                                {{ form.password }}
+                            </div>
+                        </fieldset>
+                        <button id="submit" type="submit">Войти</button>
+                    </form>
+                    {% if form.errors %}
+                        <p>{{ form.non_field_errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="" id="footer"></div>
+    </div>
 </body>
 
 </html>

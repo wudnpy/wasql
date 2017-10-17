@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 
 from scauthapp.models import Department
@@ -31,9 +32,6 @@ class UserForm(forms.ModelForm):
             'email': 'Почта'
         }
 
-
-
-
 class DepartmentForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Введите название отдела'}))
 
@@ -50,3 +48,12 @@ class DepartmentForm(forms.ModelForm):
             'name': 'Отдел',
             'logo': 'Логотип'
         }
+
+class LoginForm(AuthenticationForm):
+     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Логин', 'class': 'text'}))
+     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Пароль', 'class': 'password'}))
+
+     def __init__(self, *args, **kwargs):
+         super(LoginForm, self).__init__(*args, **kwargs)
+         self.fields['username'].label = ''
+         self.fields['password'].label = ''

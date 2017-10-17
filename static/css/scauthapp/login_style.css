@@ -1,0 +1,39 @@
+#header {
+    text-align: right;
+    margin-top: 2%;
+    margin-right: 5%;
+}
+
+#main {
+    background-color: #EDEFEC;
+    margin-top: 10%;
+    margin-left: 40%;
+    margin-right: 40%;
+    padding: 20px;
+    border-color: #D1D3D3;
+    border-style: solid;
+}
+
+#title {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.text {
+    display: table;
+    margin: 5% auto;
+}
+
+.password {
+    display: table;
+    margin: 5% auto;
+}
+
+#submit {
+    display: table;
+    margin: 1% auto;
+}
+
+#sing-up {
+
+}
