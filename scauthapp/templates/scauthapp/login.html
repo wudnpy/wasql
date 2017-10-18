@@ -28,10 +28,10 @@
                         {% csrf_token %}
                         <fieldset>
                             <div class="field-group">
-                                {{ form.username}}
+                                <span class="glyphicon glyphicon-user"></span> {{ form.username}}
                             </div>
                             <div class="field-group">
-                                {{ form.password }}
+                                <span class="glyphicon glyphicon-lock"></span> {{ form.password }}
                             </div>
                         </fieldset>
                         <button id="submit" type="submit">Войти</button>

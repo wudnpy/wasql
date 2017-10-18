@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% load staticfiles %}
 {% block title %} Работа с запросами {% endblock %}
 
 {% block style %}
@@ -11,17 +12,10 @@
 }
 
 </style>
+<link rel="stylesheet" href="{% static 'css/scauthapp/queries-style.css' %}">
 {% endblock %}
 
 {% block scripts %}
-
-<script type="text/javascript">
-function () {
-    $("#dropdown_btn").css("background-color", "yellow");
-}
-
-
-</script>
 
 {% endblock %}
 
@@ -40,6 +34,9 @@ function () {
       {% endfor %}
     </ul>
   </div>
+
+<div class="batman"></div>
+
 </div>
 
 {% endblock%}
