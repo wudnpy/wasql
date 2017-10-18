@@ -1,10 +1,22 @@
+##############################MYSQL DUMP##############################################
+mysqldump -uroot -h82.82.82.82 -p database > database.sql
+
 ##############################Create DataBase#########################################
 CREATE DATABASE `telegram_bot`;
 
 ##############################Create custom tables####################################
-CREATE TABLE `age` (
+CREATE TABLE `groups` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(100) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1 ;
+
+CREATE TABLE `data` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `group_id` INT DEFAULT NULL,
+    `pokazatel` VARCHAR(255) DEFAULT NULL,
+    `score_id` INT DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 AUTO_INCREMENT=1 ;
@@ -70,6 +82,25 @@ INSERT INTO `groups` (`name`) VALUES ("Отношение персонала" );
 INSERT INTO `groups` (`name`) VALUES ("Качество документооборота" );
 INSERT INTO `groups` (`name`) VALUES ("Чистота и хозяйственное обеспечение" );
 INSERT INTO `groups` (`name`) VALUES ("Благодарности и нейтральные комментарии" );
+
+
+INSERT INTO `groups` (`name`) VALUES (`Использование Аналитических систем`);
+INSERT INTO `groups` (`name`) VALUES (`Профилактическая работа`);
+INSERT INTO `groups` (`name`) VALUES (`Управление финансами`);
+INSERT INTO `groups` (`name`) VALUES (`Выполнение плана по Гос. Заданию`);
+INSERT INTO `groups` (`name`) VALUES (`Использование технического оборудования`);
+INSERT INTO `groups` (`name`) VALUES (`Соблюдение "МСП"`);
+INSERT INTO `groups` (`name`) VALUES (`Качество ведения приёма`);
+INSERT INTO `groups` (`name`) VALUES (`Нарушения`);
+INSERT INTO `groups` (`name`) VALUES (`Обеспеченность кадрами`);
+INSERT INTO `groups` (`name`) VALUES (`Кадровая аналитика`);
+INSERT INTO `groups` (`name`) VALUES (`Льготное лекарственное обеспечение`);
+INSERT INTO `groups` (`name`) VALUES (`Использование медицинского оборудования`);
+INSERT INTO `groups` (`name`) VALUES (`Уровень смертности`);
+
+
+
+
 
 INSERT INTO `age` (`name`) VALUES ("Дети");
 INSERT INTO `age` (`name`) VALUES ("Взрослые");
