@@ -5,3 +5,79 @@
 - Разобраться с веб формами.
 - Проанализировать модуль "Рейтинг".
 - Разобраться с AJAX.
+
+
+'auth_db': {
+    'NAME': 'auth_db',
+    'ENGINE': 'mysql.connector.django',
+    'USER': 'root',
+    'PASSWORD': my_dict['password'],
+    'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+    'PORT': '3306',
+    'OPTIONS': {
+      'autocommit': True,
+    },
+},
+'primary1': {
+    'NAME': 'primary1',
+    'ENGINE': 'mysql.connector.django',
+    'USER': 'root',
+    'PASSWORD': my_dict['password'],
+    'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+    'PORT': '3306',
+    'OPTIONS': {
+      'autocommit': True,
+    },
+},
+'replica1': {
+    'NAME': 'replica1',
+    'ENGINE': 'mysql.connector.django',
+    'USER': 'root',
+    'PASSWORD': my_dict['password'],
+    'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+    'PORT': '3306',
+    'OPTIONS': {
+      'autocommit': True,
+    },
+},
+
+
+
+
+
+
+
+
+'auth_db': {
+    'NAME': 'auth_db',
+    'ENGINE': 'django.db.backends.mysql',
+    'USER': 'root',
+    'PASSWORD': my_dict['password'],
+    'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+    'PORT': '3306',
+    'OPTIONS': {
+      'autocommit': True,
+    },
+},
+'primary1': {
+    'NAME': 'primary1',
+    'ENGINE': 'django.db.backends.mysql',
+    'USER': 'root',
+    'PASSWORD': my_dict['password'],
+    'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+    'PORT': '3306',
+    'OPTIONS': {
+      'autocommit': True,
+    },
+},
+'replica1': {
+    'NAME': 'replica1',
+    'ENGINE': 'django.db.backends.mysql',
+    'USER': 'root',
+    'PASSWORD': my_dict['password'],
+    'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+    'PORT': '3306',
+    'OPTIONS': {
+      'autocommit': True,
+    },
+},

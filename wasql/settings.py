@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import csv
+
+from routers.AuthRouter import AuthRouter as auth_router
+from routers.PrimaryReplicaRouter import PrimaryReplicaRouter as primary_replica_router
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -93,10 +97,73 @@ WSGI_APPLICATION = 'wasql.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+def read_csv_file(filepath, encoding='utf-8'):
+    with open(filepath, 'rt', encoding=encoding) as src:
+        rdr = csv.reader(src)
+        for key, value in rdr:
+            yield str(key), str(value) #yield - возвращает элемент последовательности в виде кортежа.
+
+file_path = os.path.abspath("C:/PW/constants.txt")
+
+#print('FILE PATH: ' + str(file_path))
+
+def generator_to_dict(generator):
+	#print('GENERATOR: ' + str(generator))
+	my_dict = dict((x,y) for x,y in generator)
+	return my_dict
+
+my_dict = generator_to_dict(read_csv_file(file_path))
+
+#my_dict.keys() # получить все ключи из словаря
+
+# База данных поумолчанию
+# 'ENGINE': 'django.db.backends.sqlite3',
+# 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'default': {
+        'NAME': 'auth_db',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'root',
+        'PASSWORD': my_dict['password'],
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        'OPTIONS': {
+          'autocommit': True,
+        },
+    },
+    'auth_db': {
+        'NAME': 'auth_db',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'root',
+        'PASSWORD': my_dict['password'],
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        'OPTIONS': {
+          'autocommit': True,
+        },
+    },
+    'primary1': {
+        'NAME': 'primary1',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'root',
+        'PASSWORD': my_dict['password'],
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        'OPTIONS': {
+          'autocommit': True,
+        },
+    },
+    'replica1': {
+        'NAME': 'replica1',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'root',
+        'PASSWORD': my_dict['password'],
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        'OPTIONS': {
+          'autocommit': True,
+        },
     },
 }
 
@@ -150,3 +217,11 @@ STATICFILES_DIRS = [
 
 #
 LOGIN_REDIRECT_URL = '/'
+
+# AUTH_ROUTER_PATH = (os.path.join(BASE_DIR, 'AuthRouter'),)
+# print(AUTH_ROUTER_PATH)
+# PRIMARY_REPLICA_ROUTER_PATH = (os.path.join(BASE_DIR, 'PrimaryReplicaRouter'),)
+# print(PRIMARY_REPLICA_ROUTER_PATH)
+
+
+#DATABASE_ROUTERS =['routers.AuthRouter.AuthRouter', 'routers.PrimaryReplicaRouter.PrimaryReplicaRouter']

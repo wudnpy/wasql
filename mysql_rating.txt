@@ -3,7 +3,7 @@ mysqldump -uroot -h82.82.82.82 -p database > database.sql
 
 ##############################Create DataBase#########################################
 CREATE DATABASE `telegram_bot`;
-
+CREATE DATABASE my_database CHARACTER SET utf8;
 ##############################Create custom tables####################################
 CREATE TABLE `groups` (
     `id` INT NOT NULL AUTO_INCREMENT,
