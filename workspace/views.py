@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 
-from workspace.forms import Query
+from workspace.models import Query
 from asql_connector import ASQLConnector
+
 
 # Create your views here.
 def news(request):

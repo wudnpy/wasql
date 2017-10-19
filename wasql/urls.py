@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^workspace/queries/', sc_workspace.queries, name='workspace-queries'),
     url(r'^workspace/query-detail/(\d+)', sc_workspace.query_detail, name='workspace-query-detail'),
     url(r'^rating/home/', sc_rating.rating, name='rating-home'),
+    url(r'^rating/score/', sc_rating.score, name='rating-score'),
     #url(r'formpage/', views.form_page, name='form-page')
     #url(r'^(?P<pizza_id>\d+)$', views.pizza_detail, name='pizza-detail'),
     #url(r'^$', views.home, name='index'),

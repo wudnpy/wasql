@@ -11,14 +11,49 @@
 {% block page %}
 
 <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12">
-    <h2>Рейтинг</h2>
     <div class="row">
-
-        <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12" id="content">
-            Какой то текст<br>
-            Много какогото текста
+        <div class="col-xs-12 col-sd-2 col-md-2 col-ld-2">
+            <h2>Рейтинг</h2>
         </div>
+        <div class="col-xs-12 col-sd-10 col-md-10 col-ld-10">
+            <ul>
+                <li class="submenu">&#x2022;<a href="#">Сравнить поликлиники</a></li>
+                <li class="submenu">&#x2022;<a href="#">Посмотреть общий балл по АПЦ</a></li>
+                <li class="submenu">&#x2022;<a href="{% url 'rating-score' %}">Посмотреть общий балл по АПЦ</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="row" id="indicators">
+        <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="title-group">
+            <b>Группы</b>
+        </div>
+        <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="title-indicator">
+            <b>Показатели</b>
+        </div>
+        <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="title-calculation">
+            <b>Вычисления</b>
+        </div>
+
+
+        {% for indicator in indicators %}
+            <div class="row">
+                <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="group">
+                    {{ indicator.group }}
+                </div>
+                <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="indicator">
+                    {{ indicator.indicator }}
+                </div>
+                <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="calculation">
+                    {{ indicator.calculation }}
+                </div>
+            </div>
+        {% endfor%}
+
     </div>
 </div>
-
+<div class="row">
+    <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12" id="footer">
+    </div>
+</div>
 {% endblock %}
