@@ -1,0 +1,80 @@
+
+#controller #ac1, #months, #group, #ac2, #type  {
+    text-align: center;
+}
+
+.selectable .ui-selecting {
+    background: #FECA40;
+}
+
+.selectable .ui-selected {
+    background: #F39814;
+    color: black;
+}
+
+.selectable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100px;
+    overflow-y: auto;
+    list-style-type: none;
+}
+
+#selectable-ac1 li {
+    margin: 3px;
+    padding: 0.4em;
+    font-size: 7px;
+    width: 30%;
+    display: inline-block;
+}
+
+#selectable-month li {
+    margin: 3px;
+    padding: 0.4em;
+    font-size: 7px;
+    width: 90%;
+    height: 20px;
+}
+
+#selectable-ac2 li {
+    margin: 3px;
+    padding: 0.4em;
+    font-size: 7px;
+    width: 30%;
+    display: inline-block;
+}
+
+
+
+/*.ac_container {
+    width: 90%;
+    height: 200px;
+    border: 1px solid black;
+    overflow-y: scroll;
+}
+.ac_container ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.ac_container ul li {
+    background-color: green;
+    width: 35%;
+    height: 100px;
+*/
+
+/*Убираю отступ у элемента списка*/
+#months-container {
+    padding: 0;
+    list-style-type: none;
+}
+
+/*Убираю точку у элемента списка*/
+#months-container li {
+    list-style:none;
+    background-image:none;
+    background-repeat:none;
+    background-position:0;
+}

@@ -1,12 +1,136 @@
 {% extends 'base.html' %}
+
 {% load staticfiles %}
 
 {% block title %} Общий балл по АПЦ {% endblock %}
-    <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12">
 
-        
+{% block style %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="{% static 'css/rating/score-style.css' %}">
+{% endblock %}
 
-    </div>
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function() {
+    $( ".selectable" ).selectable({
+      stop: function() {
+
+        if (true) {
+            var result_ac1 = $( "#select-result-ac1" ).empty();
+            var result_ac2 = $( "#select-result-ac2" ).empty();
+            var result_month = $( "#select-result-month" ).empty();
+            var result_group = $( "#select-result-group" ).empty();
+            var result_age = $( "#select-result-age" ).empty();
+        } else {
+            var result_ac1 = $( "#select-result-ac1" );
+            var result_ac2 = $( "#select-result-ac2" );
+            var result_month = $( "#select-result-month" );
+            var result_group = $( "#select-result-group" );
+            var result_age = $( "#select-result-age" );
+        }
+        $( ".ui-selected", this ).each(function() {
+
+        var index = $( "#selectable li" ).index( this );
+        //   var index_ac2 = $( "#selectable-ac2 li" ).index( this );
+        //   var index_month = $( "#selectable-month li" ).index( this );
+        //   var index_group = $( "#selectable-group li" ).index( this );
+        //   var index_age = $( "#selectable-age li" ).index( this );
+
+          var selected_id = $(this).closest('ol').attr('id');
+          console.log(selected_id);
+
+          switch(selected_id) {
+              case 'selectable-ac1':
+                  result_ac1.append( $(this).text());
+                  break;
+              case 'selectable-ac2':
+                  result_ac2.append( $(this).text());
+                  break;
+              case 'selectable-month':
+                  result_month.append( $(this).text());
+                  break;
+              case 'selectable-group':
+                  result_group.append( $(this).text());
+                  break;
+              case 'selectable-age':
+                  result_age.append( $(this).text());
+                  break;
+          }
+
+
+
+        });
+      }
+    });
+  });
+</script>
+<!-- <script>
+    $( function() {
+        window.months = {{months|safe}};
+    });
+</script> -->
+<!-- <script src="{% static 'js/rating/score.js' %}"></script> -->
+{% endblock %}
+
 {% block page %}
+    <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12" id="controller">
+        <div class="row">
+            <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="ac1">
+                <b>Амбулаторный ценрт 1</b>
+                <ol class="selectable" id="selectable-ac1">
+                    {% for ac_name in ac_all %}
+                      <li class="ui-widget-content"> {{ ac_name }}</li>
+                    {% endfor %}
+                </ol>
+
+            </div>
+            <div class="col-xs-12 col-sd-1 col-md-1 col-ld-1" id="months">
+                <b>Месяц</b>
+                <ol class="selectable" id="selectable-month">
+                    {% for month in months %}
+                      <li class="ui-widget-content"> {{ month }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-xs-12 col-sd-2 col-md-2 col-ld-2" id="group">
+                <b>Группа показателей</b>
+                <ol class="selectable" id="selectable-groups">
+                    {% for group in groups %}
+                  <li class="ui-widget-content"> {{ group }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="ac2">
+                <b>Амбулаторный центр 2</b>
+                <ol class="selectable" id="selectable-ac2">
+                    {% for ac_name in ac_all %}
+                  <li class="ui-widget-content"> {{ ac_name }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-xs-12 col-sd-1 col-md-1 col-ld-1" id="type">
+                <b>Cеть</b>
+                <ol class="selectable" id="selectable-age">
+                    {% for age_ in age %}
+                  <li class="ui-widget-content"> {{ age_ }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12">
+                <p id="feedback">
+                    <p><span>Вы выбрали АЦ1:</span> <span id="select-result-ac1">none</span>.</p>
+                    <p><span>Вы выбрали месяц:</span> <span id="select-result-month">none</span>.</p>
+                    <p><span>Вы выбрали группу:</span> <span id="select-result-group">none</span>.</p>
+                    <p><span>Вы выбрали АЦ2:</span> <span id="select-result-ac2">none</span>.</p>
+                    <p><span>Вы выбрали сеть:</span> <span id="select-result-age">none</span>.</p>
+                </p>
+            </div>
+
+        </div>
+    </div>
 
 {% endblock %}
