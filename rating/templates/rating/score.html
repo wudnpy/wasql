@@ -17,19 +17,20 @@ $( function() {
     $( ".selectable" ).selectable({
       stop: function() {
 
-        if (true) {
-            var result_ac1 = $( "#select-result-ac1" ).empty();
-            var result_ac2 = $( "#select-result-ac2" ).empty();
-            var result_month = $( "#select-result-month" ).empty();
-            var result_group = $( "#select-result-group" ).empty();
-            var result_age = $( "#select-result-age" ).empty();
-        } else {
             var result_ac1 = $( "#select-result-ac1" );
             var result_ac2 = $( "#select-result-ac2" );
             var result_month = $( "#select-result-month" );
             var result_group = $( "#select-result-group" );
             var result_age = $( "#select-result-age" );
-        }
+
+            if (true) {
+                result_ac1.empty();
+                result_ac2.empty();
+                result_month.empty();
+                result_group.empty();
+                result_age.empty();
+            }
+            
         $( ".ui-selected", this ).each(function() {
 
         var index = $( "#selectable li" ).index( this );
