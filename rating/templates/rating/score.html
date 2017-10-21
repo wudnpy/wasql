@@ -13,9 +13,12 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+
 $( function() {
     $( ".selectable" ).selectable({
       stop: function() {
+
+            var remove_id = $(this).attr("id")
 
             var result_ac1 = $( "#select-result-ac1" );
             var result_ac2 = $( "#select-result-ac2" );
@@ -23,14 +26,24 @@ $( function() {
             var result_group = $( "#select-result-group" );
             var result_age = $( "#select-result-age" );
 
-            if (true) {
-                result_ac1.empty();
-                result_ac2.empty();
-                result_month.empty();
-                result_group.empty();
-                result_age.empty();
-            }
-            
+            switch(remove_id) {
+                case 'selectable-ac1':
+                    result_ac1.empty();
+                    break;
+                case 'selectable-ac2':
+                    result_ac2.empty();
+                    break;
+                case 'selectable-month':
+                    result_month.empty();
+                    break;
+                case 'selectable-group':
+                    result_group.empty();
+                    break;
+                case 'selectable-age':
+                    result_age.empty();
+                    break;
+                }
+
         $( ".ui-selected", this ).each(function() {
 
         var index = $( "#selectable li" ).index( this );
@@ -40,7 +53,7 @@ $( function() {
         //   var index_age = $( "#selectable-age li" ).index( this );
 
           var selected_id = $(this).closest('ol').attr('id');
-          console.log(selected_id);
+
 
           switch(selected_id) {
               case 'selectable-ac1':
@@ -59,9 +72,6 @@ $( function() {
                   result_age.append( $(this).text());
                   break;
           }
-
-
-
         });
       }
     });
