@@ -99,7 +99,7 @@ INSERT INTO `groups` (`name`) VALUES (`Использование медицин
 INSERT INTO `groups` (`name`) VALUES (`Уровень смертности`);
 
 
-
+INSERT INTO `rating_data' (`ac_name`,  `load_date`, `groups`, `indicator`, `value`, `score`, `indicator_type`,  `geo1`, `geo2`,  `score_type`,  `age_type`,  `district_city`,  `months`) VALUES ("ГБУЗ ГП № 107 ДЗМ", "1 янв", "Использование Аналитических систем", "Блокировка ЦМ", 1.0 , 0.77, "Общий показатель", 55,861484, 37,608023, "Да", "Взрослые", "СВАО", "Январь");
 
 
 INSERT INTO `age` (`name`) VALUES ("Дети");

@@ -6,7 +6,7 @@
 
 {% block style %}
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="{% static 'css/rating/score-style.css' %}">
+<link rel="stylesheet" href="{% static 'css/rating/compare-style.css' %}">
 {% endblock %}
 
 {% block scripts %}
@@ -88,7 +88,16 @@ $( function() {
 {% block page %}
     <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12" id="controller">
         <div class="row">
-            <div class="col-xs-12 col-sd-2 col-md-2 col-ld-2" id="months">
+            <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="ac1">
+                <b>Амбулаторный ценрт 1</b>
+                <ol class="selectable" id="selectable-ac1">
+                    {% for ac_name in ac_all %}
+                      <li class="ui-widget-content"> {{ ac_name }}</li>
+                    {% endfor %}
+                </ol>
+
+            </div>
+            <div class="col-xs-12 col-sd-1 col-md-1 col-ld-1" id="months">
                 <b>Месяц</b>
                 <ol class="selectable" id="selectable-month">
                     {% for month in months %}
@@ -96,7 +105,23 @@ $( function() {
                     {% endfor %}
                 </ol>
             </div>
-            <div class="col-xs-12 col-sd-2 col-md-2 col-ld-2" id="type">
+            <div class="col-xs-12 col-sd-2 col-md-2 col-ld-2" id="group">
+                <b>Группа показателей</b>
+                <ol class="selectable" id="selectable-group">
+                    {% for group in groups %}
+                  <li class="ui-widget-content"> {{ group }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-xs-12 col-sd-4 col-md-4 col-ld-4" id="ac2">
+                <b>Амбулаторный центр 2</b>
+                <ol class="selectable" id="selectable-ac2">
+                    {% for ac_name in ac_all %}
+                  <li class="ui-widget-content"> {{ ac_name }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-xs-12 col-sd-1 col-md-1 col-ld-1" id="type">
                 <b>Cеть</b>
                 <ol class="selectable" id="selectable-age">
                     {% for age_ in age %}
@@ -108,7 +133,10 @@ $( function() {
         <div class="row">
             <div class="col-xs-12 col-sd-12 col-md-12 col-ld-12">
                 <p id="feedback">
+                    <p><span>Вы выбрали АЦ1:</span> <span id="select-result-ac1">none</span>.</p>
                     <p><span>Вы выбрали месяц:</span> <span id="select-result-month">none</span>.</p>
+                    <p><span>Вы выбрали группу:</span> <span id="select-result-group">none</span>.</p>
+                    <p><span>Вы выбрали АЦ2:</span> <span id="select-result-ac2">none</span>.</p>
                     <p><span>Вы выбрали сеть:</span> <span id="select-result-age">none</span>.</p>
                 </p>
             </div>
@@ -120,23 +148,32 @@ $( function() {
                  <table class="table">
                    <thead>
                      <tr>
-                       <th>АЦ</th>
-                       <th>Общий бал</th>
-                       <th>Максимальное кол-во баллов в месяц</th>
-                       <th>Среднее значение по Общему баллу</th>
-                       <th>Медианное значение по Общему баллу</th>
+                       <th>Поликлиника № 1</th>
+                       <th>Выполнение плана по Гос. Заданию</th>
+                       <th>Использование Аналитических систем</th>
+                       <th>Использование медицинского оборудования</th>
+                       <th>Использование технического оборудования</th>
+                       <th>Кадровая аналитика</th>
+                       <th>Качество ведения приема</th>
+                       <th>Льготное лекарственное обеспечение</th>
+                       <th>Нарушения</th>
+                       <th>Обеспеченность кадрами</th>
+                       <th>Профилактическая работа</th>
+                       <th>Соблюдение "МСП"</th>
+                       <th>Управление финансами</th>
+                       <th>Уровень смертности</th>
+                       <th>Общий итог</th>
                      </tr>
                    </thead>
                    <tbody>
-
                      <tr>
                        <td>1</td>
                        <td>Anna</td>
                        <td>Pitt</td>
                        <td>35</td>
                        <td>New York</td>
+                       <td>USA</td>
                      </tr>
-
                    </tbody>
                  </table>
                  </div>

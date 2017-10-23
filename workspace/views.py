@@ -1,3 +1,6 @@
+import sqlite3
+import os
+
 from django.shortcuts import render, redirect
 
 from workspace.models import Query
